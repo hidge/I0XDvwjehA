@@ -5,7 +5,7 @@ SetWorkingDir %A_ScriptDir%\
 iniRead, Client_List, %A_ScriptDir%\Settings.ini, Clients
 iniRead, Supervisor_List, %A_ScriptDir%\Settings.ini, Supervisors
 iniRead, Operative_List, %A_ScriptDir%\Settings.ini, Operatives
-iniRead, Sender_List, %A_ScriptDir%\Settings.ini, Users
+iniRead, Sender_List, %A_ScriptDir%\Settings.ini, Administrators
 iniRead, Vehicle_List, %A_ScriptDir%\Settings.ini, Vehicles
 
 xlsx := ".xlsx"
@@ -175,14 +175,14 @@ ChooseLocation:
 ;What happens when you:	
 ChooseService:	
 
-    GuiControlGet, Service
+    GuiControlGet, Service ,,, text
 	Location_Choice := Service	
 	
 	StringReplace , Location_Choice, Location_Choice, %A_Space%,,All
 	
-	GuiControlGet, Service,,, Text
-
 	Location_Number := Location_Choice
+	
+;	MsgBox, %Location_Number%
 	
 	JobSheet := Location_Name "-" Location_Number
 	
